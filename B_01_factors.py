@@ -40,6 +40,17 @@ def num_check(question):
         except ValueError:
             print(error)
 
+# work out factors, returns sorted list
+def factor (var_to_factor):
+    factors = []
+
+    for item in range(1, var_to_factor + 1):
+        if item not in factors:
+            remainder = var_to_factor % item
+            if remainder == 0:
+                factors.append(item)
+
+    return factors
 
 # main routine goes here
 
@@ -48,10 +59,37 @@ want_instructions = input("Press <enter> to read the instructions or any key to 
 if want_instructions == "":
     instructions()
 
-
 while True:
+    comment = ""
     to_factor = num_check("To factor: ")
     print ("You chose to factor: ", to_factor)
 
+    all_factors = []
+
     if to_factor == "xxx":
         break
+    elif to_factor != 1:
+        all_factors = factor(to_factor)
+    else:
+        all_factors = ""
+        print("One is Unity! It only has one factor - itself!")
+
+    # check if Prime
+    if len(all_factors) == 2:
+        comment = f"{to_factor} is a prime number."
+
+    # elif check if a perfect square, i.e. the list has an odd number of factors
+    elif len(all_factors) % 2 == 1:
+        comment = f"{to_factor} is a perfect square."
+
+    # create headings
+    if to_factor > 1:
+        heading = f"Factors of {to_factor}"
+    else:
+        heading = "One is special..."
+
+    # output factors and comment
+    print()
+    statement_generator(heading, "*")
+    print(all_factors)
+    print(comment)
