@@ -12,7 +12,7 @@ def instructions():
     The program will show the factors of your chosen integer.
     
     It will also tell you if your chosen number is a prime number (i.e. it has two factors only),
-    a Unity - a single factor, or a perfect square.
+    Unity - a single factor, or a perfect square.
     
     To exit the program, enter type 'xxx'.
     ''')
